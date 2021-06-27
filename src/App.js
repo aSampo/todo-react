@@ -16,13 +16,11 @@ function App() {
   //falta agregar key al array y funcionalidad borrar
   return (
     <div className="App">
-      <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Input newTaskAdded={addNewTask} />
         {listOfTask.map((task) => (
           <Task task={task} />
         ))}
-      </header>
     </div>
   );
 }
