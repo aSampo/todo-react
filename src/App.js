@@ -10,6 +10,7 @@ function App() {
   function addNewTask(event) {
     event.preventDefault();
     setNewTask([...listOfTask, event.target.elements.taskInput.value]);
+    event.target.elements.taskInput.value = '';
   }
 
   //falta agregar key al array y funcionalidad borrar
