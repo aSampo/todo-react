@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Input from "./components/Input/Input";
-import Task from "./components/Task/task";
+import Input from "./components/Input";
+import Task from "./components/Task";
 import { useState } from "react";
 
 function App() {
@@ -9,17 +9,17 @@ function App() {
 
   function addNewTask(event) {
     event.preventDefault();
-    setNewTask([...listOfTask, event.target.elements.taskInput.value]);
+    setNewTask([...listOfTask, {description: event.target.elements.taskInput.value, key: Math.floor(Math.random() * Date.now())}]);
     event.target.elements.taskInput.value = '';
   }
 
-  //falta agregar key al array y funcionalidad borrar
   return (
     <div className="App">
         <img src={logo} className="App-logo" alt="logo" />
         <Input newTaskAdded={addNewTask} />
         {listOfTask.map((task) => (
-          <Task task={task} />
+           // eslint-disable-next-line
+          <Task key={task.key} task={task} deleteTask={event => setNewTask(listOfTask.filter(item => item.key != event.target.id))} />
         ))}
     </div>
   );
